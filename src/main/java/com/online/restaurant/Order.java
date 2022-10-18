@@ -4,11 +4,37 @@ import java.util.Date;
 import java.util.List;
 
 public class Order {
+    public double getTotalamount() {
+        return totalamount;
+    }
+
+    public void setTotalamount(double totalamount) {
+        this.totalamount = totalamount;
+    }
+
+    public Date getOrderdate() {
+        return orderdate;
+    }
+
+    public void setOrderdate(Date orderdate) {
+        this.orderdate = orderdate;
+    }
+
+    public String getOrderstatus() {
+        return orderstatus;
+    }
+
+    public void setOrderstatus(String orderstatus) {
+        this.orderstatus = orderstatus;
+    }
 
     private double Price;
     private String deliveryaddress;
     private long orderID;
     private Customer customer;
+    private double totalamount;
+    private Date orderdate;
+    private String orderstatus;
     private Vendor vendor;
     private List<OrderMenuItem> menuItems;
 

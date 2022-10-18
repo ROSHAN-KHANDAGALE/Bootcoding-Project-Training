@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class VendorDAO {
-    public static final String TABLE_NAME = "vendor";
+    public static final String TABLE_NAME = "app_vendor";
 
     public void crateTable() {
         try {
@@ -14,14 +14,20 @@ public class VendorDAO {
             Connection con = DriverManager
                     .getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "root#123");
             Statement stmt = con.createStatement();
-            String sql = "Select * from " + TABLE_NAME;
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                System.out.println("Name = " + rs.getString("name"));
-                System.out.println("Address = " + rs.getString("address"));
-                System.out.println("PhoneNumber = " + rs.getString("phoneno"));
-                System.out.println("City = " + rs.getString("city"));
-            }
+            String query = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME
+                    + " (id bigint NOT NULL, " +
+                    " name text, " +
+                    " address text, " +
+                    " emailid text, " +
+                    " phoneno bigint, " +
+                    " city text, " +
+                    " state text, " +
+                    " pure_veg bool, " +
+                    " category text, " +
+                    " rating numeric, " +
+                    " CONSTRAINT app_vendor_pk PRIMARY KEY (id))";
+            System.out.println("Create Table Query : " +query);
+            stmt.executeUpdate(query);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
